@@ -32,7 +32,19 @@ const app = new Koa()
   .use(cors())
   .use(bodyparser())
   .use(logger())
-  .use(e2k(swStats.getMiddleware({ swaggerSpec: apiSpec })))
+  .use(
+    e2k(
+      swStats.getMiddleware({
+        swaggerSpec: apiSpec,
+        authentication: false, // Broken: https://github.com/slanatech/swagger-stats/issues/109
+        uriPath: "/stats",
+        apdexThreshold: 250,
+        onAuthenticate: (_, username, password) => {
+          return username === "molo17" && password === "Couchba$$_2020";
+        },
+      })
+    )
+  )
   .use(
     koaCompress({
       threshold: 0,
