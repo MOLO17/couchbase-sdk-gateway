@@ -1,0 +1,50 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple query connector for couchbase.",
+    "version": "1.0.0",
+    "title": "Couchbase-query-connector",
+    "contact": {
+      "email": "web@molo17.com"
+    }
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Health",
+      "description": "Kubernetes health api"
+    },
+    {
+      "name": "Query",
+      "description": "Couchbase query connector endpoints"
+    }
+  ],
+  "schemes": ["https"],
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": ["Health"],
+        "summary": "Check the service health",
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/query": {
+      "post": {
+        "tags": ["Query"],
+        "summary": "Query endpoint",
+        "operationId": "query",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

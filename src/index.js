@@ -12,6 +12,10 @@ const logger = require("./middlewares/logger");
 const queryPathRouter = require("./routers/queryRouter");
 const Router = require("koa-router");
 
+const swStats = require("swagger-stats");
+const apiSpec = require("./swagger.json");
+const e2k = require("express-to-koa");
+
 const {
   API_PORT: apiPort = 3000,
   API_VERSION: apiVersion = "v1",
@@ -28,6 +32,7 @@ const app = new Koa()
   .use(cors())
   .use(bodyparser())
   .use(logger())
+  .use(e2k(swStats.getMiddleware({ swaggerSpec: apiSpec })))
   .use(
     koaCompress({
       threshold: 0,
