@@ -1,0 +1,24 @@
+{
+  "name": "couchbase-connector",
+  "version": "0.0.1",
+  "description": "couchbase connector for queries",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "mattia.pettenuzzo@molo17.com",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "couchbase": "^3.0.4",
+    "dotenv": "^8.2.0",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compress": "^5.0.1",
+    "koa-router": "^9.1.0"
+  }
+}
