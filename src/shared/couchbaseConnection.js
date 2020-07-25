@@ -1,6 +1,14 @@
 const { Cluster } = require("couchbase");
 const retryErrorCodes = [107, 100, 170, 201];
 
+const {
+  CLUSTER_USERNAME: username,
+  CLUSTER_PASSWORD: password,
+  CLUSTER_CONNECTION_STRING: connectionString,
+  BUCKET: bucketName,
+  MAX_RETRIES: maxRetries = 3,
+} = process.env;
+
 class CouchbaseConnection {
   constructor(
     connectionString,
@@ -55,4 +63,16 @@ class CouchbaseConnection {
   }
 }
 
-module.exports = CouchbaseConnection;
+const isSecure = connectionString.startsWith("couchbases://");
+const certpath = isSecure ? "./ca.pem" : undefined;
+const certpathParam = isSecure ? `?certpath=${certpath}` : "";
+const connection = new CouchbaseConnection(
+  connectionString,
+  certpathParam,
+  username,
+  password,
+  bucketName,
+  parseInt(maxRetries, 10)
+).connect();
+
+module.exports = connection;

@@ -4,7 +4,7 @@
   "description": "couchbase connector for queries",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@koa/cors": "^3.1.0",
+    "chalk": "^4.1.0",
     "couchbase": "^3.0.4",
     "dotenv": "^8.2.0",
     "koa": "^2.13.0",
