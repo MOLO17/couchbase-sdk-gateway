@@ -14,8 +14,13 @@ module.exports = new Router().post("/", async (ctx, next) => {
       return next();
     }
 
+    const queryString = query.split("$bucket").join(`\`${connection.bucketName}\``);
+
+    console.log(`Query ${queryString}`);
+    console.log(` WITH -> ${JSON.stringify(options)}`);
+
     const result = await connection.query(
-      query.replace("$bucket", `\`${connection.bucketName}\``),
+      queryString,
       options
     );
 

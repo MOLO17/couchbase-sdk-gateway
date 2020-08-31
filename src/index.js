@@ -1,6 +1,8 @@
-require("dotenv").config({
-  path: "./.env",
-});
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config({
+    path: "./.env",
+  });
+}
 const authorizer = require("./middlewares/authorizer");
 const bodyparser = require("koa-bodyparser");
 const cors = require("@koa/cors");
@@ -27,12 +29,14 @@ const {
   DOCS_USERNAME: docsUsername,
   STATS_PASSWORD: statsPassword,
   DOCS_PASSWORD: docsPassword,
+  BUCKET: bucketName,
 } = process.env;
 
 const apiRouter = new Router()
   .prefix(`/api/${apiVersion}`)
   .use(authorizer)
-  .use("/query", queryPathRouter.routes());
+  .use(`/query`, queryPathRouter.routes())
+  .use(`/query/${bucketName}`, queryPathRouter.routes());
 
 const healthRouter = new Router().use("/health", healthPathRouter.routes());
 

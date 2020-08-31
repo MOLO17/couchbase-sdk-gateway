@@ -27,6 +27,7 @@ class CouchbaseConnection {
     this.cluster = null;
   }
   connect() {
+    console.log("CONNECTING TO COUCHBASE...")
     this.cluster = new Cluster(
       `${this.connectionString}${this.certpathParam}`,
       {
@@ -57,6 +58,7 @@ class CouchbaseConnection {
           retry ? retry - 1 : this.maxRetries
         );
       } else {
+        console.log('Unexpected error', error);
         throw error;
       }
     }
@@ -64,8 +66,8 @@ class CouchbaseConnection {
 }
 
 const isSecure = connectionString.startsWith("couchbases://");
-const certpath = isSecure ? "./ca.pem" : undefined;
-const certpathParam = isSecure ? `?certpath=${certpath}` : "";
+// const certpath = isSecure ? "./ca.pem" : undefined;
+const certpathParam = isSecure ? `?ssl=no_verify` : "";
 const connection = new CouchbaseConnection(
   connectionString,
   certpathParam,

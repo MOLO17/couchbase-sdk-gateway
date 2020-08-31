@@ -4,16 +4,15 @@ const authorizer = (ctx, next) => {
   } = ctx;
 
   if (!apikey) {
-    return ctx.throw(400, {
-      error: "Bad Request",
-      message: "Missing x-api-key header",
+    return ctx.throw(401, {
+      error: "Unauthorized",
     });
   }
 
   if (apikey !== process.env.X_API_KEY) {
-    return ctx.throw(401, {
-      error: "Unauthorized",
-      message: "You are not authorized to access this resource",
+    return ctx.throw(403, {
+      error: "Forbidden",
+      message: "You don't have permission to access this resource",
     });
   }
   return next();
