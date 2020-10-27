@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: couchbase-sdk-gateway
+spec:
+  template:
+      spec:
+        nodeSelector:
+          node.kubernetes.io/role: "sync-gw"
+        tolerations:
+        - key: node.kubernetes.io/role
+          value: sync-gw
+          operator: Equal
+          effect: NoSchedule

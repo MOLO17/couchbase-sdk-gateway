@@ -1,3 +1,9 @@
 .env
 ca.pem
 /node_modules/
+.gitsecret/keys/random_seed
+!*.secret
+kubernetes/dev/bucket-02/secrets/cb-sdk-gateway-bucket-02.env
+kubernetes/dev/bucket-06/secrets/cb-sdk-gateway-bucket-06.env
+kubernetes/dev/bucket-07/secrets/cb-sdk-gateway-bucket-07.env
+kubernetes/dev/base/secrets/cb-sdk-gateway-common.env

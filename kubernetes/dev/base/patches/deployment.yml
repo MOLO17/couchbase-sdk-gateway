@@ -1,0 +1,5 @@
+- op: add
+  path: /spec/template/spec/containers/0/envFrom/0
+  value:
+    secretRef:
+      name: cb-sdk-gateway-common
