@@ -24,7 +24,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-acm
     kubernetes.io/ingress.class: external-acm
     kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/affinity: "persistent"
@@ -37,7 +36,3 @@ spec:
     - host: sdk-gw.dev-zone-01.cloudservice.mobilebridge.it
       http:
         paths: []
-  tls:
-    - hosts:
-      - sdk-gw.dev-zone-01.cloudservice.mobilebridge.it
-      secretName: sdk-gw-dev-zone-01
