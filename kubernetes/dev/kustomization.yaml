@@ -35,3 +35,25 @@ patchesJson6902:
       name: couchbase-sdk-gateway-ingress
       namespace: couchbase
     path: bucket-07/patches/ingress.yml
+
+  - target:
+      group: extensions
+      version: v1beta1
+      kind: Ingress
+      name: couchbase-sdk-gateway-ingress-acm
+      namespace: couchbase
+    path: bucket-02/patches/ingress.yml
+  - target:
+      group: extensions
+      version: v1beta1
+      kind: Ingress
+      name: couchbase-sdk-gateway-ingress-acm
+      namespace: couchbase
+    path: bucket-06/patches/ingress.yml
+  - target:
+      group: extensions
+      version: v1beta1
+      kind: Ingress
+      name: couchbase-sdk-gateway-ingress-acm
+      namespace: couchbase
+    path: bucket-07/patches/ingress.yml
