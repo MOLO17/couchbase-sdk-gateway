@@ -30,5 +30,4 @@ deploy_dev:
     - git secret reveal -f -p $GPG_PASSPHRASE
     - cd kubernetes/dev
   script:
-    - kustomize build
     - kustomize build | kubectl apply -f -
