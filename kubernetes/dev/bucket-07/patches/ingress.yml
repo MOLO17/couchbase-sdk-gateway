@@ -4,4 +4,4 @@
     backend:
       serviceName: couchbase-sdk-gateway-balancer-bucket-07
       servicePort: 8080
-    path: /api/v1/query/bucket-07/*
+    path: /api/v1/query/bucket-07
