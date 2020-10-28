@@ -25,13 +25,10 @@ deploy_dev:
     - echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
     - apk update
     - apk add gawk git git-secret@testing ca-certificates gnupg bash
-    - echo $GITLAB_PRIVATE_KEY
-    - echo $GPG_PASSPHRASE
     - echo $GITLAB_PRIVATE_KEY | awk '{gsub(/\\n/,"\n")}1' > /tmp/gpg.key
     - echo $GPG_PASSPHRASE | gpg --batch --yes --passphrase-fd 0  --import /tmp/gpg.key
     - git secret reveal -f -p $GPG_PASSPHRASE
     - cd kubernetes/dev
   script:
     - kustomize build
-    # - kustomize edit set imagetag 074358058669.dkr.ecr.eu-west-1.amazonaws.com/test:$CI_COMMIT_SHORT_SHA
     - kustomize build | kubectl apply -f -

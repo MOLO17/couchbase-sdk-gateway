@@ -12,4 +12,4 @@
   path: /spec/template/spec/containers/0/envFrom/1
   value:
     secretRef:
-      name: cb-sdk-gateway-bucket-06
+      name: cb-sdk-gateway-bucket-07
