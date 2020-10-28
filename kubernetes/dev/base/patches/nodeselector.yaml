@@ -6,9 +6,9 @@ spec:
   template:
       spec:
         nodeSelector:
-          node.kubernetes.io/role: "sync-gw"
+          node.kubernetes.io/role: "couchbase-utilities"
         tolerations:
         - key: node.kubernetes.io/role
-          value: sync-gw
+          value: couchbase-utilities
           operator: Equal
           effect: NoSchedule
