@@ -12,6 +12,16 @@ spec:
       labels:
         app: couchbase-sdk-gateway
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - couchbase
+            topologyKey: "kubernetes.io/hostname"
       containers:
         - name: app
           image: registry.gitlab.com/mobilebridgesrl/cloud/cloudservice/couchbase-sdk-gateway:latest
