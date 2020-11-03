@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-google
+    kubernetes.io/ingress.class: external
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/affinity: "persistent"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+  name: couchbase-sdk-gateway-ingress
+spec:
+  rules:
+    - host: sdk-gw.test-cluster-02.cloudservice.mobilebridge.it
+      http:
+        paths: []
+  tls:
+    - hosts:
+      - sdk-gw.test-cluster-02.cloudservice.mobilebridge.it
+      secretName: sdk-gw-test-cluster-02
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: external-acm
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/affinity: "persistent"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+  name: couchbase-sdk-gateway-ingress-acm
+spec:
+  rules:
+    - host: sdk-gw.test-zone-01.cloudservice.mobilebridge.it
+      http:
+        paths: []

@@ -7,3 +7,7 @@ kubernetes/dev/bucket-02/secrets/cb-sdk-gateway-bucket-02.env
 kubernetes/dev/bucket-06/secrets/cb-sdk-gateway-bucket-06.env
 kubernetes/dev/bucket-07/secrets/cb-sdk-gateway-bucket-07.env
 kubernetes/dev/base/secrets/cb-sdk-gateway-common.env
+kubernetes/test/base/secrets/cb-sdk-gateway-common.env
+kubernetes/test/bucket-02/secrets/cb-sdk-gateway-bucket-02.env
+kubernetes/test/bucket-06/secrets/cb-sdk-gateway-bucket-06.env
+kubernetes/test/bucket-07/secrets/cb-sdk-gateway-bucket-07.env

@@ -31,3 +31,18 @@ deploy_dev:
     - cd kubernetes/dev
   script:
     - kustomize build | kubectl apply -f -
+deploy_test:
+  stage: deploy
+  tags:
+    - test-runner-01
+  image: quay.io/sighup/kubectl-kustomize:1.18.2_3.6.1
+  before_script:
+    - echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
+    - apk update
+    - apk add gawk git git-secret@testing ca-certificates gnupg bash
+    - echo $GITLAB_PRIVATE_KEY | awk '{gsub(/\\n/,"\n")}1' > /tmp/gpg.key
+    - echo $GPG_PASSPHRASE | gpg --batch --yes --passphrase-fd 0  --import /tmp/gpg.key
+    - git secret reveal -f -p $GPG_PASSPHRASE
+    - cd kubernetes/test
+  script:
+    - kustomize build | kubectl apply -f -

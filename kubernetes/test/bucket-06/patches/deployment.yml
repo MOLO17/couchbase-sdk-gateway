@@ -1,0 +1,15 @@
+- op: replace
+  path: /spec/template/spec/containers/0/resources
+  value:
+    limits:
+      cpu: "200m"
+      memory: "400Mi"
+    requests:
+      cpu: "100m"
+      memory: "100Mi"
+
+- op: add
+  path: /spec/template/spec/containers/0/envFrom/1
+  value:
+    secretRef:
+      name: cb-sdk-gateway-bucket-06

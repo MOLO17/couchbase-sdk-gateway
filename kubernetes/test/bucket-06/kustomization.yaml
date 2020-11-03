@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: couchbase
+
+bases:
+  - ../base
+
+nameSuffix: -bucket-06
+
+commonLabels:
+  bucket: bucket-06
+
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: couchbase-sdk-gateway-bucket-06
+      namespace: couchbase
+    path: patches/deployment.yml
+
+secretGenerator:
+  - name: cb-sdk-gateway-bucket-06
+    namespace: couchbase
+    envs:
+      - secrets/cb-sdk-gateway-bucket-06.env
