@@ -5,7 +5,7 @@ namespace: couchbase
 bases:
   - bucket-02
   - bucket-06
-  - bucket-07
+  - twf-20009-test
 
 commonLabels:
   cluster: test-cluster-02
@@ -34,7 +34,7 @@ patchesJson6902:
       kind: Ingress
       name: couchbase-sdk-gateway-ingress
       namespace: couchbase
-    path: bucket-07/patches/ingress.yml
+    path: twf-20009-test/patches/ingress.yml
 
   - target:
       group: extensions
@@ -56,4 +56,4 @@ patchesJson6902:
       kind: Ingress
       name: couchbase-sdk-gateway-ingress-acm
       namespace: couchbase
-    path: bucket-07/patches/ingress.yml
+    path: twf-20009-test/patches/ingress.yml
