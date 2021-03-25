@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: couchbase
+
+bases:
+  - twf-20009-prod
+
+commonLabels:
+  cluster: prod-cluster-02
+
+resources:
+  - base/ingress.yaml
+
+patchesJson6902:
+  - target:
+      group: extensions
+      version: v1beta1
+      kind: Ingress
+      name: couchbase-sdk-gateway-ingress
+      namespace: couchbase
+    path: twf-20009-prod/patches/ingress.yml
+
+  - target:
+      group: extensions
+      version: v1beta1
+      kind: Ingress
+      name: couchbase-sdk-gateway-ingress-acm
+      namespace: couchbase
+    path: twf-20009-prod/patches/ingress.yml
