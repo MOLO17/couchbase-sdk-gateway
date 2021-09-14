@@ -1,7 +1,0 @@
-- op: add
-  path: /spec/rules/0/http/paths/0
-  value:
-    backend:
-      serviceName: couchbase-sdk-gateway-balancer-bucket-06
-      servicePort: 8080
-    path: /api/v1/query/bucket-06
