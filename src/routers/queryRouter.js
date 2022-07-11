@@ -18,14 +18,11 @@ module.exports = new Router().post('/', async (ctx, next) => {
       .split('$bucket')
       .join(`\`${connection.bucketName}\``);
 
-    console.log(`Query ${queryString}`);
-    console.log(` WITH -> ${JSON.stringify(options)}`);
-
     const t1 = Date.now();
 
     const result = await connection.query(queryString, options);
 
-    console.log('FETCH EXECUTION TIME:', Date.now() - t1);
+    console.log('FETCH EXECUTION TIME: ', Date.now() - t1);
 
     ctx.status = 200;
     ctx.body = result;

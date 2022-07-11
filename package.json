@@ -1,6 +1,6 @@
 {
   "name": "couchbase-connector",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "couchbase connector for queries",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "chalk": "^4.1.0",
-    "couchbase": "^3.0.4",
+    "couchbase": "^3.2.5",
     "dotenv": "^8.2.0",
     "express-to-koa": "^2.0.0",
     "koa": "^2.13.0",
