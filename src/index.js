@@ -46,7 +46,6 @@ const app = new Koa()
     await next();
     const ms = Date.now() - start;
     ctx.set('X-Response-Time', `${ms}ms`);
-    console.log(`Response served in ${ms}`);
   })
   .use(cors())
   .use(bodyparser())

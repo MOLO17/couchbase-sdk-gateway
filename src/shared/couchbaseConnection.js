@@ -59,7 +59,8 @@ class CouchbaseConnection {
       const { cause: { code = '' } = {}, message = '' } = error;
       if (
         retryErrorCodes.includes(code) ||
-        message == 'parent cluster object has been closed'
+        message == 'parent cluster object has been closed' ||
+        !this.cluster
       ) {
         await this.connect();
         if (retry <= 0) {
